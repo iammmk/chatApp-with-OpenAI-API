@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/favicon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/chat.css') }}"
+    />
+    <title>chatApp</title>
+  </head>
+  <body class="app-body">
+    <div class="navbar">
+      <div class="logo-content">
+        <a href="{{url_for('chat')}}">
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='images/openai-logo.svg') }}"
+            href="{{url_for('chat')}}"
+            alt="Logo"
+          />
+        </a>
+        <a href="{{url_for('chat')}}" class="app-name">
+          <h3>chatApp</h3>
+        </a>
+      </div>
+      <div>
+        <a class="logout-btn" href="{{url_for('logout')}}">Logout</a>
+      </div>
+    </div>
+    <div class="container">
+      <form class="chat-form" action="/chat" method="POST">
+        <div class="input-container">
+          <textarea
+            class="textbox"
+            name="textbox"
+            placeholder="Send a message"
+          ></textarea>
+          <input class="submit-btn" type="submit" value="Submit" />
+        </div>
+        {% if text %}
+        <p class="response-text">{{ text }}</p>
+        {% endif %}
+      </form>
+    </div>
+  </body>
+</html>
